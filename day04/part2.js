@@ -7,12 +7,7 @@ fs.readFile(__dirname + '/input.txt', 'utf8', (err, data) => {
     lines.forEach((line) => {
         line = line.trim();
         var words = line.split(' ');
-        words = words.map(x => {
-            x = x.split('');
-            x.sort();
-            return x.join('');
-        });
-        words.sort();
+        words = words.map(x => [...x].sort().join('')).sort();
         for (var i = words.length - 1; i > 0; i--) {
             if (words[i] === words[i - 1]) {
                 invalid++;
