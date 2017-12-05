@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 fs.readFile(__dirname + '/input.txt', 'utf8', (err, data) => {
-    data = parseInt(data);
+    data = Number(data);
     var x, y, matrix;
     x = y = 0;
     matrix = {};

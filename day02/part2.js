@@ -5,7 +5,7 @@ fs.readFile(__dirname + '/input.txt', 'utf8', (err, data) => {
     var sum = 0;
     data.split('\n').forEach((line) => {
         line = line.trim();
-        var cols = line.split(/\s+/).map((x) => parseInt(x));
+        var cols = line.split(/\s+/).map(Number);
         cols.sort((a, b) => a - b);
         for (var i = cols.length - 1; i > 0; i--) {
             for (var j = i - 1; j >= 0; j--) {
