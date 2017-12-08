@@ -25,5 +25,5 @@ fs.readFile(__dirname + '/input.txt', 'utf8', (err, data) => {
 });
 
 function getValue(register, registers) {
-    return (registers[register] === undefined) ? 0 : registers[register];
+    return registers[register] || 0;
 }
