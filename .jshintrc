@@ -12,5 +12,6 @@
   "undef": true,
   "unused": true,
   "latedef": "nofunc",
-  "node": true
+  "node": true,
+  "evil": true
 }
