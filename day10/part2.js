@@ -7,16 +7,15 @@ fs.readFile(__dirname + '/input.txt', 'utf8', (err, data) => {
     const list = [...Array(SIZE).keys()];
     var [pos, skip, span] = [0, 0, []];
     for (var i = 0; i < 64; i++) {
-        for (var j = 0; j < data.length; j++) {
-            const len = data[j];
+        for (const len of data) {
             if(len > SIZE) {
-                return;
+                continue;
             }
-            for(var k = pos; k < pos + len; k++) {
-                span.push(list[k % SIZE]);
+            for(var j = pos; j < pos + len; j++) {
+                span.push(list[j % SIZE]);
             }
-            for(k = pos; k < pos + len; k++) {
-                list[k % SIZE] = span.pop();
+            for(j = pos; j < pos + len; j++) {
+                list[j % SIZE] = span.pop();
             }
             pos = (pos + len + skip++) % SIZE;
         }

@@ -6,10 +6,10 @@ fs.readFile(__dirname + '/input.txt', 'utf8', (err, data) => {
     data = data.trim();
     const list = [...Array(SIZE).keys()];
     var [pos, skip, span] = [0, 0, []];
-    data.split(',').forEach((len) => {
+    for(var len of data.split(',')) {
         len = Number(len);
         if(len > SIZE) {
-            return;
+            continue;
         }
         for(var i = pos; i < pos + len; i++) {
             span.push(list[i % SIZE]);
@@ -18,7 +18,7 @@ fs.readFile(__dirname + '/input.txt', 'utf8', (err, data) => {
             list[i % SIZE] = span.pop();
         }
         pos = (pos + len + skip++) % SIZE;
-    });
+    }
 
     console.log(list[0] * list[1]);
 });
