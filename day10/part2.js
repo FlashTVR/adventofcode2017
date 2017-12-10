@@ -4,7 +4,7 @@ const SIZE = 256;
 
 fs.readFile(__dirname + '/input.txt', 'utf8', (err, data) => {
     data = [...data.trim()].map((c) => c.charCodeAt(0)).concat(17, 31, 73, 47, 23);
-    const list = [...Array(SIZE).fill(0, 0, SIZE - 1).keys()];
+    const list = [...Array(SIZE).keys()];
     var [pos, skip, span] = [0, 0, []];
     for (var i = 0; i < 64; i++) {
         for (var j = 0; j < data.length; j++) {
