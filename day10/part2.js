@@ -23,7 +23,7 @@ fs.readFile(__dirname + '/input.txt', 'utf8', (err, data) => {
 
     const result = [];
     for(let i = 0; i < SIZE; i += 16) {
-        result.push(list.slice(i, i + 16).reduce((a, b) => a ^ b).toString(16));
+        result.push(('0' + list.slice(i, i + 16).reduce((a, b) => a ^ b).toString(16)).substr(-2));
     }
 
     console.log(result.join(''));
