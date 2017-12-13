@@ -4,7 +4,7 @@ fs.readFile(__dirname + '/input.txt', 'utf8', (err, data) => {
     data = data.trim();
     const nodes = new Map();
     for(const line of data.split('\n')) {
-        var [node, recipients] = line.split('<->');
+        let [node, recipients] = line.split('<->');
         node = Number(node);
         recipients = recipients.split(',').map(Number);
         if(!nodes.has(node)) {
