@@ -11,6 +11,8 @@ fs.readFile(__dirname + '/input.txt', 'utf8', (err, data) => {
         };
     });
     const collide = (a, b) => a.p.x === b.p.x && a.p.y === b.p.y && a.p.z === b.p.z;
+    const remove = new Set();
+    const filter = (e) => !remove.has(e.id);
 
     for(let i = 0; i < 10000; i++) {
         for(const particle of particles) {
@@ -21,7 +23,7 @@ fs.readFile(__dirname + '/input.txt', 'utf8', (err, data) => {
             particle.p.y += particle.v.y;
             particle.p.z += particle.v.z;
         }
-        const remove = new Set();
+        remove.clear();
         for(let j = 0; j < particles.length - 1; j++) {
             for(let k = j + 1; k < particles.length; k++) {
                 if(collide(particles[j], particles[k])) {
@@ -29,7 +31,7 @@ fs.readFile(__dirname + '/input.txt', 'utf8', (err, data) => {
                 }
             }
         }
-        particles = particles.filter((e) => !remove.has(e.id));
+        particles = particles.filter(filter);
     }
 
     console.log(particles.length);
