@@ -11,7 +11,7 @@ fs.readFile(__dirname + '/input.txt', 'utf8', (err, data) => {
         };
     });
 
-    for(let i = 0; i < 100000; i++) {
+    for(let i = 0; i < 10000; i++) {
         for(const particle of particles) {
             particle.v.x += particle.a.x;
             particle.v.y += particle.a.y;
