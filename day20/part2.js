@@ -14,7 +14,7 @@ fs.readFile(__dirname + '/input.txt', 'utf8', (err, data) => {
     const remove = new Set();
     const filter = (e) => !remove.has(e.id);
 
-    for(let i = 0; i < 10000; i++) {
+    for(let i = 0; i < 1000; i++) {
         for(const particle of particles) {
             particle.v.x += particle.a.x;
             particle.v.y += particle.a.y;
